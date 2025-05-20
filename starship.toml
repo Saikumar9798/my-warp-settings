@@ -1,0 +1,55 @@
+# https://dev.to/therubberduckiee/how-to-configure-starship-to-look-exactly-like-p10k-zsh-warp-h9h
+# https://github.com/theRubberDuckiee/dev-environment-files/blob/main/starship.toml
+
+format = """\
+[\ue0b6](bg:#fff fg:#7DF9AA)\
+[\ue635 ](bg:#7DF9AA fg:#090c0c)\
+[](fg:#7DF9AA bg:#41BEC2)\
+$directory\
+[](fg:#41BEC2 bg:#FCF392)\
+$git_branch\
+$git_status\
+$git_metrics\
+[](fg:#FCF392 bg:#fff)\n\
+$character
+"""
+# $time\
+# [](fg:#1C3A5E bg:#3B76F0)\
+
+[directory]
+format = "[ \ue5fe  $path ]($style)"
+style = "fg:#000000 bg:#41BEC2" #bg:41BEC2
+
+[git_branch]
+format = '[ $symbol$branch(:$remote_branch) ]($style)'
+symbol = "\uf113  \uf418 "
+style = "fg:#1C3A5E bg:#FCF392"
+
+[git_status]
+format = '[$all_status]($style)'
+style = "fg:#1C3A5E bg:#FCF392"
+disabled = true
+
+[git_metrics]
+format = "([+$added]($added_style)[/](fg:#1C3A5E bg:#FCF392)[-$deleted]($deleted_style))"
+added_style = "fg:#355E3B bg:#FCF392"
+deleted_style = "fg:bright-red bg:#FCF392"
+disabled = true
+
+[hg_branch]
+format = "[ $symbol$branch ]($style)"
+symbol = " "
+
+[cmd_duration]
+format = "[  $duration ]($style)"
+style = "fg:bright-white bg:18"
+
+[character]
+success_symbol = '[ ➜ ](bold green) '
+error_symbol = '[ ✗ ](#E84D44) '
+
+[time]
+disabled = false
+time_format = "%R" # Hour:Minute Format
+style = "bg:#1d2230"
+format = "[ \uf43a  $time ](bg:#1C3A5E fg:#8DFBD2)"
